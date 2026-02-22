@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Abiya ❤️ Jomal | Engagement</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Cinzel', serif;
+background:#1a1416;
+overflow-x:hidden;
+}
+
+/* HERO BACKGROUND — BLUSH OVERLAY */
+
+.hero{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+background:
+linear-gradient(rgba(45,20,28,.65),rgba(20,10,14,.85)),
+url('https://res.cloudinary.com/drgmm8ig7/image/upload/v1771693093/WhatsApp_Image_2026-02-21_at_8.38.32_PM_krojbi.jpg');
+background-size:cover;
+background-position:center;
+z-index:0;
+}
+
+/* SOFT GOLD PARTICLES */
+
+.particle{
+position:fixed;
+background:#f6d78f;
+border-radius:50%;
+opacity:.6;
+animation:float linear infinite;
+}
+
+@keyframes float{
+from{transform:translateY(100vh);}
+to{transform:translateY(-10vh);}
+}
+
+/* OPEN BUTTON — BLUSH GOLD */
+
+.open-btn{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+padding:16px 32px;
+font-size:clamp(16px,4vw,22px);
+border:none;
+background:linear-gradient(145deg,#f8d7da,#f6d78f);
+color:#5a3e45;
+cursor:pointer;
+border-radius:50px;
+letter-spacing:3px;
+font-weight:bold;
+box-shadow:0 10px 40px rgba(0,0,0,.6);
+transition:.4s;
+width:80%;
+max-width:300px;
+}
+
+.open-btn:hover{
+transform:translate(-50%,-50%) scale(1.05);
+}
+
+/* SCROLL */
+
+.scroll{
+margin-top:120vh;
+width:90%;
+max-width:520px;
+background:linear-gradient(rgba(255,240,242,0.92),rgba(255,240,242,0.92));
+color:#4a2c33;
+padding:40px 25px;
+text-align:center;
+border-radius:16px;
+box-shadow:0 30px 90px rgba(0,0,0,.8);
+margin-left:auto;
+margin-right:auto;
+opacity:0;
+transform:translateY(100px);
+transition:1s;
+position:relative;
+}
+
+.show-scroll{
+opacity:1;
+transform:translateY(0);
+}
+
+/* GOLD RODS */
+
+.scroll:before,
+.scroll:after{
+content:'';
+position:absolute;
+width:112%;
+height:18px;
+background:linear-gradient(to right,#f6d78f,#caa44a,#f6d78f);
+left:-6%;
+border-radius:8px;
+}
+
+.scroll:before{ top:-18px; }
+.scroll:after{ bottom:-18px; }
+
+/* NAMES */
+
+.names{
+font-family:'Cormorant Garamond', serif;
+font-size:clamp(36px,8vw,70px);
+font-style:italic;
+font-weight:700;
+letter-spacing:2px;
+color:#b76e79;
+margin:20px 0;
+line-height:1.2;
+}
+
+/* RING SPARKLE */
+
+.ring{
+font-size:42px;
+display:inline-block;
+animation:ringFloat 3s ease-in-out infinite;
+position:relative;
+}
+
+@keyframes ringFloat{
+0%,100%{transform:translateY(0px) rotate(0deg);}
+50%{transform:translateY(-8px) rotate(8deg);}
+}
+
+.sparkle{
+position:absolute;
+font-size:14px;
+color:#ffd700;
+animation:sparkleAnim 1.5s infinite;
+}
+
+.sparkle:nth-child(2){
+top:-8px;
+left:20px;
+animation-delay:.3s;
+}
+
+.sparkle:nth-child(3){
+top:10px;
+right:-10px;
+animation-delay:.6s;
+}
+
+@keyframes sparkleAnim{
+0%{opacity:0; transform:scale(.5);}
+50%{opacity:1; transform:scale(1.2);}
+100%{opacity:0; transform:scale(.5);}
+}
+
+/* DETAILS */
+
+.details{
+line-height:1.9;
+font-size:15px;
+}
+
+/* COUNTDOWN */
+
+.countdown{
+margin-top:25px;
+padding:20px;
+border:1px solid #e6b7bd;
+border-radius:14px;
+background:#fff6f8;
+}
+
+.flip-clock{
+display:flex;
+justify-content:space-between;
+margin-top:20px;
+gap:8px;
+}
+
+.flip-box{
+flex:1;
+background:linear-gradient(145deg,#4a2c33,#2b181d);
+border-radius:12px;
+padding:15px 5px;
+box-shadow:0 6px 15px rgba(0,0,0,.5);
+text-align:center;
+}
+
+.flip-box span{
+display:block;
+font-size:clamp(20px,5vw,30px);
+font-weight:bold;
+color:#f6d78f;
+letter-spacing:2px;
+transition:transform .3s;
+}
+
+.flip-box small{
+font-size:12px;
+color:#f8d7da;
+}
+
+/* EVENT BOX */
+
+.event{
+margin-top:25px;
+padding:20px;
+border:1px solid #e6b7bd;
+border-radius:14px;
+background:#fff6f8;
+}
+
+.btn{
+margin-top:15px;
+padding:12px 26px;
+border:none;
+background:linear-gradient(145deg,#b76e79,#f6d78f);
+color:white;
+cursor:pointer;
+border-radius:30px;
+font-weight:bold;
+width:100%;
+}
+
+/* MUSIC */
+
+.music{
+position:fixed;
+bottom:15px;
+right:15px;
+background:#f6d78f;
+border:none;
+padding:12px;
+border-radius:50%;
+cursor:pointer;
+font-size:18px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hero"></div>
+
+<button class="open-btn" onclick="openScroll()">
+Open Invitation
+</button>
+
+<div class="scroll" id="scroll">
+
+<h3>You Are Invited</h3>
+
+<div class="names">
+Abiya Roy <br> 
+<span class="ring">💍
+<span class="sparkle">✨</span>
+<span class="sparkle">✨</span>
+</span>
+<br> Jomal Mathew
+</div>
+
+<div class="details">
+Together with their families,<br>
+invite you to celebrate their joyous engagement.
+</div>
+
+<div class="countdown">
+<h3>💖 Engagement Countdown</h3>
+<div class="flip-clock">
+<div class="flip-box"><span id="days">00</span><small>Days</small></div>
+<div class="flip-box"><span id="hours">00</span><small>Hours</small></div>
+<div class="flip-box"><span id="minutes">00</span><small>Minutes</small></div>
+<div class="flip-box"><span id="seconds">00</span><small>Seconds</small></div>
+</div>
+</div>
+
+<div class="event">
+<h3>💍 Engagement</h3>
+<strong>4th July 2026</strong><br>
+<span style="display:block;margin-top:8px;font-weight:bold;color:#b76e79;">
+🕊 11:30 AM
+</span>
+<span style="display:block;margin-top:6px;">
+📍 St. Joseph's Forane Pilgrim Church, Panathady
+</span>
+<button class="btn"
+onclick="window.open('https://maps.app.goo.gl/JERJCMjhzShqsAid9','_blank')">
+View Location
+</button>
+</div>
+
+</div>
+
+<audio id="music" autoplay loop>
+<source src="https://res.cloudinary.com/drgmm8ig7/video/upload/v1771692901/WhatsApp_Audio_2026-02-21_at_9.21.50_PM_ko8gpl.mp3" type="audio/mp4">
+</audio>
+
+<button class="music" onclick="toggleMusic()">🎵</button>
+
+<script>
+
+for(let i=0;i<40;i++){
+let p=document.createElement("div");
+p.className="particle";
+let size=Math.random()*6+2;
+p.style.width=size+"px";
+p.style.height=size+"px";
+p.style.left=Math.random()*100+"vw";
+p.style.animationDuration=(8+Math.random()*10)+"s";
+document.body.appendChild(p);
+}
+
+const engagementDate = new Date("July 4, 2026 11:30:00").getTime();
+
+function updateCountdown(){
+const now = new Date().getTime();
+const distance = engagementDate - now;
+
+const days = Math.floor(distance / (1000*60*60*24));
+const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+const seconds = Math.floor((distance % (1000*60)) / 1000);
+
+update("days",days);
+update("hours",hours);
+update("minutes",minutes);
+update("seconds",seconds);
+}
+
+function update(id,val){
+document.getElementById(id).innerText=String(val).padStart(2,'0');
+}
+
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+function openScroll(){
+document.getElementById("scroll").classList.add("show-scroll");
+window.scrollTo({ top:window.innerHeight, behavior:'smooth' });
+document.getElementById("music").play();
+}
+
+function toggleMusic(){
+let m=document.getElementById("music");
+if(m.paused) m.play();
+else m.pause();
+}
+
+</script>
+
+</body>
+</html>
