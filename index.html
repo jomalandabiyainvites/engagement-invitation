@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<title>Abiya ❤️ Jomal | Engagement Invitation</title>
+<title>Abiya ❤️ Jomal | Engagement</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600;1,700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -14,38 +14,42 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+-webkit-tap-highlight-color: transparent;
 }
 
 body{
 font-family:'Cinzel', serif;
-background:#1a1416;
 overflow-x:hidden;
+min-height:100vh;
+position:relative;
 }
 
-/* HERO BACKGROUND — BLUSH OVERLAY */
-
-.hero{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100vh;
-background:
-linear-gradient(rgba(45,20,28,.65),rgba(20,10,14,.85)),
-url('https://res.cloudinary.com/drgmm8ig7/image/upload/v1771693093/WhatsApp_Image_2026-02-21_at_8.38.32_PM_krojbi.jpg');
-background-size:cover;
-background-position:center;
-z-index:0;
+/* Fixed hero background — always visible everywhere */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: url('https://res.cloudinary.com/drgmm8ig7/image/upload/v1771693093/WhatsApp_Image_2026-02-21_at_8.38.32_PM_krojbi.jpg') center center / cover no-repeat;
+  z-index: -2;
 }
 
-/* SOFT GOLD PARTICLES */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(rgba(45,20,28,0.55), rgba(20,10,14,0.75));
+  z-index: -1;
+}
 
+/* ─── PARTICLES ─── */
 .particle{
 position:fixed;
 background:#f6d78f;
 border-radius:50%;
 opacity:.6;
 animation:float linear infinite;
+z-index: 10;
+pointer-events: none;
 }
 
 @keyframes float{
@@ -53,41 +57,116 @@ from{transform:translateY(100vh);}
 to{transform:translateY(-10vh);}
 }
 
-/* OPEN BUTTON — BLUSH GOLD */
-
-.open-btn{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-padding:16px 32px;
-font-size:clamp(16px,4vw,22px);
-border:none;
-background:linear-gradient(145deg,#f8d7da,#f6d78f);
-color:#5a3e45;
-cursor:pointer;
-border-radius:50px;
-letter-spacing:3px;
-font-weight:bold;
-box-shadow:0 10px 40px rgba(0,0,0,.6);
-transition:.4s;
-width:80%;
-max-width:300px;
+/* ─── LANDING ─── */
+#landing {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.open-btn:hover{
-transform:translate(-50%,-50%) scale(1.05);
+.landing-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 480px;
 }
 
-/* SCROLL */
+.landing-names {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(42px, 12vw, 82px);
+  color: #fff;
+  line-height: 1.1;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+
+.landing-amp {
+  display: block;
+  font-size: clamp(28px, 7vw, 50px);
+  color: #f6d78f;
+  margin: 4px 0;
+}
+
+.landing-divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #f6d78f, transparent);
+  margin: 20px auto;
+}
+
+.landing-date {
+  font-size: clamp(10px, 2.8vw, 13px);
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 5px;
+  margin-bottom: 40px;
+}
+
+.open-btn {
+  display: inline-block;
+  padding: 16px 0;
+  width: 75%;
+  max-width: 280px;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(12px, 3.5vw, 15px);
+  letter-spacing: 3px;
+  color: #5a3e45;
+  background: linear-gradient(145deg, #f8d7da, #f6d78f);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5), 0 0 0 1px rgba(246,215,143,0.3);
+  transition: transform 0.3s ease;
+  -webkit-appearance: none;
+  font-weight: bold;
+}
+
+.open-btn:active { transform: scale(0.97); }
+
+.scroll-hint {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+.scroll-hint.visible { opacity: 1; }
+.scroll-hint span { font-size: 9px; letter-spacing: 4px; color: rgba(255,255,255,0.45); }
+.scroll-arrow {
+  width: 18px; height: 18px;
+  border-right: 1px solid rgba(255,255,255,0.35);
+  border-bottom: 1px solid rgba(255,255,255,0.35);
+  transform: rotate(45deg);
+  animation: bounce 1.6s infinite;
+}
+@keyframes bounce {
+  0%,100% { transform: rotate(45deg) translateY(0); }
+  50%      { transform: rotate(45deg) translateY(5px); }
+}
+
+/* ─── SCROLL / PARCHMENT — ALL ORIGINAL, UNTOUCHED ─── */
 
 .scroll{
-margin-top:120vh;
+margin-top:0;
 width:90%;
 max-width:520px;
 background:linear-gradient(rgba(255,240,242,0.92),rgba(255,240,242,0.92));
 color:#4a2c33;
-padding:40px 25px;
+padding:40px clamp(14px,5vw,25px);
 text-align:center;
 border-radius:16px;
 box-shadow:0 30px 90px rgba(0,0,0,.8);
@@ -104,8 +183,6 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* GOLD RODS */
-
 .scroll:before,
 .scroll:after{
 content:'';
@@ -120,8 +197,6 @@ border-radius:8px;
 .scroll:before{ top:-18px; }
 .scroll:after{ bottom:-18px; }
 
-/* NAMES */
-
 .names{
 font-family:'Cormorant Garamond', serif;
 font-size:clamp(36px,8vw,70px);
@@ -132,8 +207,6 @@ color:#b76e79;
 margin:20px 0;
 line-height:1.2;
 }
-
-/* RING SPARKLE */
 
 .ring{
 font-size:42px;
@@ -172,14 +245,10 @@ animation-delay:.6s;
 100%{opacity:0; transform:scale(.5);}
 }
 
-/* DETAILS */
-
 .details{
 line-height:1.9;
-font-size:15px;
+font-size:clamp(13px,3.5vw,15px);
 }
-
-/* COUNTDOWN */
 
 .countdown{
 margin-top:25px;
@@ -190,36 +259,39 @@ background:#fff6f8;
 }
 
 .flip-clock{
-display:flex;
-justify-content:space-between;
+display:grid;
+grid-template-columns:repeat(4,1fr);
 margin-top:20px;
-gap:8px;
+gap:6px;
 }
 
 .flip-box{
-flex:1;
 background:linear-gradient(145deg,#4a2c33,#2b181d);
 border-radius:12px;
-padding:15px 5px;
+padding:12px 4px 10px;
 box-shadow:0 6px 15px rgba(0,0,0,.5);
 text-align:center;
+min-width:0;
+overflow:hidden;
 }
 
 .flip-box span{
 display:block;
-font-size:clamp(20px,5vw,30px);
+font-size:clamp(18px,6vw,30px);
 font-weight:bold;
 color:#f6d78f;
-letter-spacing:2px;
+letter-spacing:0;
 transition:transform .3s;
+line-height:1.1;
 }
 
 .flip-box small{
-font-size:12px;
+display:block;
+font-size:clamp(7px,2vw,11px);
 color:#f8d7da;
+letter-spacing:1px;
+margin-top:4px;
 }
-
-/* EVENT BOX */
 
 .event{
 margin-top:25px;
@@ -241,8 +313,6 @@ font-weight:bold;
 width:100%;
 }
 
-/* MUSIC */
-
 .music{
 position:fixed;
 bottom:15px;
@@ -253,6 +323,23 @@ padding:12px;
 border-radius:50%;
 cursor:pointer;
 font-size:18px;
+z-index: 100;
+}
+
+/* ─── INVITATION WRAPPER ─── */
+#invitation {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 60px 16px 80px;
+  background: transparent;
+}
+
+@media (max-width: 360px) {
+  .scroll { padding: 36px 12px; }
+  .flip-clock { gap: 4px; }
+  .countdown { padding: 16px 10px; }
+  .event { padding: 16px 12px; }
 }
 
 </style>
@@ -260,11 +347,29 @@ font-size:18px;
 
 <body>
 
-<div class="hero"></div>
+<div id="particles"></div>
 
-<button class="open-btn" onclick="openScroll()">
-Open Invitation
-</button>
+<!-- ─── LANDING ─── -->
+<section id="landing">
+  <div class="landing-content">
+    <div class="landing-names">
+      Abiya Roy
+      <span class="landing-amp">&amp;</span>
+      Jomal Mathew
+    </div>
+    <div class="landing-divider"></div>
+    <p class="landing-date">04.07.2026 · PANATHADY, KOLICHAL, KANHANGAD</p>
+    <button class="open-btn" onclick="openScroll()">Open Invitation</button>
+  </div>
+
+  <div class="scroll-hint" id="scrollHint">
+    <span>SCROLL</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ─── INVITATION (original scroll, untouched) ─── -->
+<section id="invitation">
 
 <div class="scroll" id="scroll">
 
@@ -294,6 +399,8 @@ invite you to celebrate their joyous engagement.
 </div>
 </div>
 
+<!-- ENGAGEMENT -->
+
 <div class="event">
 <h3>💍 Engagement</h3>
 <strong>4th July 2026</strong><br>
@@ -309,7 +416,26 @@ View Location
 </button>
 </div>
 
+<!-- RECEPTION -->
+
+<div class="event">
+<h3>🎉 Reception</h3>
+<strong>4th July 2026</strong><br>
+<span style="display:block;margin-top:8px;font-weight:bold;color:#b76e79;">
+🍽 Following the Engagement Ceremony
+</span>
+<span style="display:block;margin-top:6px;">
+📍 ABC Auditorium, 18th Mile Kolichal
+</span>
+<button class="btn"
+onclick="window.open('https://maps.app.goo.gl/9bnacKKcxgSB4KkN7','_blank')">
+View Location
+</button>
 </div>
+
+</div>
+
+</section>
 
 <audio id="music" autoplay loop>
 <source src="https://res.cloudinary.com/drgmm8ig7/video/upload/v1771692901/WhatsApp_Audio_2026-02-21_at_9.21.50_PM_ko8gpl.mp3" type="audio/mp4">
@@ -319,17 +445,39 @@ View Location
 
 <script>
 
+// ─── PARTICLES ───
 for(let i=0;i<40;i++){
-let p=document.createElement("div");
-p.className="particle";
-let size=Math.random()*6+2;
-p.style.width=size+"px";
-p.style.height=size+"px";
-p.style.left=Math.random()*100+"vw";
-p.style.animationDuration=(8+Math.random()*10)+"s";
-document.body.appendChild(p);
+  let p=document.createElement("div");
+  p.className="particle";
+  let size=Math.random()*6+2;
+  p.style.width=size+"px";
+  p.style.height=size+"px";
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=(8+Math.random()*10)+"s";
+  p.style.animationDelay=(Math.random()*8)+"s";
+  document.getElementById('particles').appendChild(p);
 }
 
+// ─── OPEN SCROLL ───
+let opened = false;
+function openScroll(){
+  if(opened) return;
+  opened = true;
+
+  document.getElementById('scrollHint').classList.add('visible');
+
+  setTimeout(()=>{
+    document.getElementById('invitation').scrollIntoView({ behavior:'smooth' });
+  }, 150);
+
+  setTimeout(()=>{
+    document.getElementById('scroll').classList.add('show-scroll');
+  }, 500);
+
+  document.getElementById("music").play().catch(()=>{});
+}
+
+// ─── COUNTDOWN ───
 const engagementDate = new Date("July 4, 2026 11:30:00").getTime();
 
 function updateCountdown(){
@@ -354,12 +502,7 @@ document.getElementById(id).innerText=String(val).padStart(2,'0');
 setInterval(updateCountdown,1000);
 updateCountdown();
 
-function openScroll(){
-document.getElementById("scroll").classList.add("show-scroll");
-window.scrollTo({ top:window.innerHeight, behavior:'smooth' });
-document.getElementById("music").play();
-}
-
+// ─── MUSIC ───
 function toggleMusic(){
 let m=document.getElementById("music");
 if(m.paused) m.play();
@@ -369,5 +512,4 @@ else m.pause();
 </script>
 
 </body>
-
 </html>
