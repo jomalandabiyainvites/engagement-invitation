@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Abiya ❤️ Jomal | Engagement</title>
+<title>Abiya ❤️ Jomal | Betrothal</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600;1,700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color: transparent;}
@@ -155,7 +155,7 @@ body::after{content:'';position:fixed;inset:0;background:linear-gradient(rgba(45
       <div class="guest-pill">
         <span class="guest-dear">DEAR</span>
         <span class="guest-name" id="guest-name-display"></span>
-        <span class="guest-subtitle">You are cordially invited to the<br>Engagement of Abiya &amp; Jomal</span>
+        <span class="guest-subtitle">You are cordially invited to the<br>Betrothal of Abiya &amp; Jomal</span>
       </div>
     </div>
 
@@ -193,11 +193,11 @@ body::after{content:'';position:fixed;inset:0;background:linear-gradient(rgba(45
 
   <div class="details">
     Together with their families,<br>
-    invite you to celebrate their joyous engagement.
+    invite you to celebrate their joyous Betrothal.
   </div>
 
   <div class="countdown">
-    <h3>💖 Engagement Countdown</h3>
+    <h3>💖 Betrothal Countdown</h3>
     <div class="flip-clock">
       <div class="flip-box"><span id="days">00</span><small>Days</small></div>
       <div class="flip-box"><span id="hours">00</span><small>Hours</small></div>
@@ -206,9 +206,9 @@ body::after{content:'';position:fixed;inset:0;background:linear-gradient(rgba(45
     </div>
   </div>
 
-  <!-- ENGAGEMENT -->
+  <!-- Betrothal -->
   <div class="event">
-    <h3>💍 Engagement</h3>
+    <h3>💍 Betrothal</h3>
     <strong>July 4, 2026</strong><br>
     <span style="display:block;margin-top:8px;font-weight:bold;color:#b76e79;">
       🕊 11:30 AM
@@ -295,9 +295,9 @@ body::after{content:'';position:fixed;inset:0;background:linear-gradient(rgba(45
 <script>
 // ── CALENDAR DATA ─────────────────────────────────────────────────
 const EVENT = {
-  title:    'Engagement of Abiya Roy & Jomal Mathew',
+  title:    'Betrothal of Abiya Roy & Jomal Mathew',
   location: "St. Joseph's Forane Pilgrim Church, Panathady, Kerala",
-  details:  'You are cordially invited to celebrate the engagement of Abiya Roy and Jomal Mathew.',
+  details:  'You are cordially invited to celebrate the Betrothal of Abiya Roy and Jomal Mathew.',
   startUTC: '20260704T060000Z',   // 11:30 AM IST = 06:00 UTC
   endUTC:   '20260704T080000Z',   // 1:30 PM IST  = 08:00 UTC
   startISO: '2026-07-04T11:30:00',
@@ -335,7 +335,7 @@ function downloadICS(){
   const ics = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Abiya & Jomal Engagement//EN',
+    'PRODID:-//Abiya & Jomal Betrothal//EN',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     'BEGIN:VEVENT',
@@ -354,7 +354,7 @@ function downloadICS(){
   const url  = URL.createObjectURL(blob);
   const a    = document.createElement('a');
   a.href     = url;
-  a.download = 'abiya-jomal-engagement.ics';
+  a.download = 'abiya-jomal-Betrothal.ics';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
@@ -414,9 +414,9 @@ function openScroll(){
 }
 
 // ── COUNTDOWN ─────────────────────────────────────────────────────
-const engagementDate=new Date("July 4, 2026 11:30:00").getTime();
+const BetrothalDate=new Date("July 4, 2026 11:30:00").getTime();
 function updateCountdown(){
-  const dist=engagementDate-Date.now();
+  const dist=BetrothalDate-Date.now();
   update("days",Math.floor(dist/86400000));
   update("hours",Math.floor((dist%86400000)/3600000));
   update("minutes",Math.floor((dist%3600000)/60000));
